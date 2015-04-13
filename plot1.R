@@ -1,6 +1,6 @@
 # get Data
 source("ExData_Plotting1/load_data.R")
-myData_Period <- load_data()
+if (!exists("myData_Period")) {myData_Period <- load_data()}
 
 
 # Plots Constants
