@@ -1,44 +1,29 @@
 # Function to retrieve data from file
-load_myData <- function() {
-  
-  # Dates informations and formats
-  StartDate         <- "2007-02-01"
-  EndDate           <- "2007-02-02"
-  FormatDate        <- "%d/%m/%Y"
-  FormatDateTime    <- "%Y-%m-%d %H:%M:%S"
-  
-  #Numerical columns in data
-  StartNumericalCol <- 3
-  EndNumericalCol   <- 9
-  
-  
-  
-  # loading datatable library
+load_data <- function() {
+    
+  # loading datatable and lubridate libraries
   library(data.table)
-  file    <- "household_power_consumption.txt"
+  library(lubridate)
   
-  # Read file in a datatable
-  myData <- fread(file, header=TRUE, sep=";", colClasses="character",  na="?")
+  # Read file in a data.table
+  myData <- fread("household_power_consumption.txt", colClasses="character")
   
-  # format dates
-  myData$Date <- as.Date(myData$Date, format=FormatDate)
+  # Format Date column
+  myData[,Date:= parse_date_time(Date, "%d/%m/%Y")]
   
-  # Get data of two days
-  myData_TwoDaysPeriod <-  myData[myData$Date >= StartDate & myData$Date <= EndDate]
-  myData_TwoDaysPeriod <- data.frame(myData_TwoDaysPeriod)
+  # Get data of the two days period
+  myData_Period <-  myData[Date %between% c("2007-02-01", "2007-02-03")]
   
+  # Format DateTime and get rid of Date and Time columns
+  myData_Period[,DateTime := paste(Date, Time), by = Date]
+  myData_Period[, ':=' (DateTime = parse_date_time(DateTime, "%Y-%m-%d %T"), 
+                        Date = NULL,                                    
+                        Time = NULL)]
   
-  # Convert some columns to numeric format
-  for(col in c(StartNumericalCol:StartNumericalCol)) {
-    myData_TwoDaysPeriod[,col] <- as.numeric(as.character(myData_TwoDaysPeriod[,col]))
-  }
-  
-  
-  # Format DateTime
-  myData_TwoDaysPeriod$DateTime <- paste(myData_TwoDaysPeriod$Date, myData_TwoDaysPeriod$Time)
-  myData_TwoDaysPeriod$DateTime <- strptime(myData_TwoDaysPeriod$DateTime, format = FormatDateTime)
+  # Convert other columns to numeric format
+  myData_Period<- myData_Period[,lapply(.SD, as.numeric), by = DateTime]
   
   # return data
-  return (myData_TwoDaysPeriod)
+  return (myData_Period)
   
 }

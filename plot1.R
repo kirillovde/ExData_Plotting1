@@ -1,6 +1,6 @@
 # get Data
 source("ExData_Plotting1/load_data.R")
-myData_TwoDaysPeriod <- load_myData()
+myData_Period <- load_data()
 
 
 # Plots Constants
@@ -26,7 +26,7 @@ png(filename = PlotFileName , width = PlotWidth, height = PlotHeight, units = Pl
 par(mar = c(MarginBottom, MarginLeft, MarginTop, MarginRight))
 
 # Graphic Plot
-hist(myData_TwoDaysPeriod$Global_active_power, col = PlotColsColor, main = PlotTitle, xlab = PlotXLabel)
+hist(myData_Period$Global_active_power, col = PlotColsColor, main = PlotTitle, xlab = PlotXLabel)
 
 # Close Graphical device
 dev.off()

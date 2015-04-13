@@ -1,6 +1,6 @@
 # get Data
 source("ExData_Plotting1/load_data.R")
-myData_TwoDaysPeriod <- load_myData()
+myData_Period <- load_data()
 
 
 # Plots Constants
@@ -27,7 +27,7 @@ png(filename = PlotFileName , width = PlotWidth, height = PlotHeight, units = Pl
 par(mar = c(MarginBottom, MarginLeft, MarginTop, MarginRight))
 
 # Graphic Plot
-plot(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Global_active_power,
+plot(myData_Period$DateTime, myData_Period$Global_active_power,
      type="l",
      xlab=PlotXLabel,
      ylab=PlotYLabel)

@@ -1,6 +1,6 @@
 # get Data
 source("ExData_Plotting1/load_data.R")
-myData_TwoDaysPeriod <- load_myData()
+myData_Period <- load_data()
 
 
 # Plots Constants
@@ -31,13 +31,13 @@ par(mar = c(MarginBottom, MarginLeft, MarginTop, MarginRight))
 
 
 # Graphic Plot
-plot(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_1, col = PlotColsColor,
+plot(myData_Period$DateTime, myData_Period$Sub_metering_1, col = PlotColsColor,
      type="l",
      xlab=PlotXLabel,
      ylab=PlotYLabel)
 
-lines(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_2, col=PlotLinesColor)
-lines(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_3, col=PlotLinesColor2)
+lines(myData_Period$DateTime, myData_Period$Sub_metering_2, col=PlotLinesColor)
+lines(myData_Period$DateTime, myData_Period$Sub_metering_3, col=PlotLinesColor2)
 legend("topright",col=c("black", "red", "blue"), c("Sub_metering_1", 
                                                    "Sub_metering_2", "Sub_metering_3"), lty=1)
 
