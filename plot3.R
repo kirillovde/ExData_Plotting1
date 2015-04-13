@@ -1,5 +1,5 @@
 # get Data
-source("load_myData.R")
+source("ExData_Plotting1/load_data.R")
 myData_TwoDaysPeriod <- load_myData()
 
 
@@ -8,7 +8,7 @@ PlotWidth         <- 480
 PlotHeight        <- 480
 PlotUnits         <- "px"
 PlotBg            <- "white"
-PlotFileName      <- "./data/plot3.png"
+PlotFileName      <- "./ExData_Plotting1/plot3.png"
 
 MarginBottom      <- 8
 MarginLeft        <- 8
