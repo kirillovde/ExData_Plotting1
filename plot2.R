@@ -7,7 +7,7 @@ myData_Period <- load_data()
 PlotWidth         <- 480
 PlotHeight        <- 480
 PlotUnits         <- "px"
-PlotBg            <- "white"
+PlotBg            <- "transparent"
 PlotFileName      <- "./ExData_Plotting1/plot2.png"
 
 MarginBottom      <- 8
