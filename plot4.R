@@ -26,7 +26,7 @@ PlotYLabel        <- "Energy sub metering"
 png(filename = PlotFileName , width = PlotWidth, height = PlotHeight, units = PlotUnits, bg = PlotBg)
 
 
-#Graphic with 2 lnes and two columns
+#Graphic with 2 lines and two columns
 par(mfrow=c(2,2))
 
 

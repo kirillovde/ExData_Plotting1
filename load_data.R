@@ -20,7 +20,7 @@ load_data <- function() {
   # Convert other columns to numeric format
   myData_Period<- myData_Period[,lapply(.SD, as.numeric), by = DateTime]
   
-  # return data
+  # Return data
   return (myData_Period)
   
 }
