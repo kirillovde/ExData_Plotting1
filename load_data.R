@@ -12,7 +12,7 @@ load_data <- function() {
   myData_Period <-  myData[Date %in% c("1/2/2007", "2/2/2007")]
   
   # Format DateTime and get rid of Date and Time columns
-  myData_Period[,DateTime := paste(Date, Time), by = Date]
+  myData_Period[,DateTime := paste(Date, Time)]
   myData_Period[, ':=' (DateTime = parse_date_time(DateTime, "%d-%m-%Y %T"), 
                         Date = NULL,                                    
                         Time = NULL)]
