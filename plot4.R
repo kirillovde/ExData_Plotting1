@@ -60,4 +60,3 @@ lines(myData_Period$DateTime, myData_Period$Global_reactive_power)
 
 # Close Graphical device
 dev.off()
-

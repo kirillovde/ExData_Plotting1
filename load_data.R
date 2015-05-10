@@ -22,6 +22,5 @@ load_data <- function() {
   
   # Return data
   return (myData_Period)
-  
-}
 
+}

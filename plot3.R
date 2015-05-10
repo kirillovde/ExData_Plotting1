@@ -42,4 +42,3 @@ legend("topright",col=c("black", "red", "blue"), c("Sub_metering_1",
 
 # Close Graphical device
 dev.off()
-
